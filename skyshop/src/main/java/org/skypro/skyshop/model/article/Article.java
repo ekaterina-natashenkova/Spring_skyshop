@@ -6,8 +6,6 @@ import org.skypro.skyshop.model.search.Searchable;
 import java.util.Objects;
 import java.util.UUID;
 
-import static org.skypro.skyshop.model.search.Searchable.ARTICLE;
-
 public final class Article implements Searchable {
 
     private String titleArticle;
@@ -39,7 +37,7 @@ public final class Article implements Searchable {
     @JsonIgnore
     @Override
     public String getTypeContent() {
-        return ARTICLE;
+        return "ARTICLE";
     }
 
 

@@ -4,13 +4,8 @@ import java.util.UUID;
 
 public interface Searchable {
 
-    String PRODUCT = "PRODUCT";
-    String ARTICLE = "ARTICLE";
-
-    UUID id = null;
-
     default UUID getId() {
-        return id;
+        return UUID.randomUUID();
     }
 
     String getSearchTerm();

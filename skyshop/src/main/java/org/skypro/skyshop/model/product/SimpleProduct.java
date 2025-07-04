@@ -16,6 +16,7 @@ public class SimpleProduct extends Product {
         this.id = id;
     }
 
+    @Override
     public UUID getId() {
         return id;
     }

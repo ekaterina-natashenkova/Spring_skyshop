@@ -21,6 +21,7 @@ public class DiscountedProduct extends Product {
         this.id = id;
     }
 
+    @Override
     public UUID getId() {
         return id;
     }

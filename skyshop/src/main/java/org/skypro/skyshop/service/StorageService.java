@@ -22,7 +22,7 @@ public class StorageService {
     private final Map<UUID, Product> products;
     private final Map<UUID, Article> articles;
 
-    public StorageService(Map<UUID, Product> products, Map<UUID, Article> articles) throws IllegalAccessException {
+    public StorageService() throws IllegalAccessException {
         this.products = new HashMap<>();
         this.articles = new HashMap<>();
         createTestObjects();
@@ -44,7 +44,6 @@ public class StorageService {
         return articles.values();
     }
 
-    @GetMapping("/search")
     public Collection<Searchable> getAllSearchable() {
         return Stream.concat(products.values().stream(), articles.values().stream())
                 .collect(Collectors.toList());

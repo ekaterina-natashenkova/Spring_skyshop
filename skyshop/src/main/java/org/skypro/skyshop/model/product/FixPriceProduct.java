@@ -12,6 +12,7 @@ public class FixPriceProduct extends Product {
         this.id = id;
     }
 
+    @Override
     public UUID getId() {
         return id;
     }

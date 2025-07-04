@@ -9,22 +9,21 @@ import java.util.UUID;
 public abstract class Product implements Searchable {
 
     private String titleProduct;
-    private final UUID id;
 
     public Product(String titleProduct) throws IllegalAccessException {
-        if (titleProduct == null || titleProduct.isBlank()){
+        if (titleProduct == null || titleProduct.isBlank()) {
             throw new IllegalAccessException("Введено некорректное название продукта");  //  - проверка на null и пустую строку
         }
         this.titleProduct = titleProduct;
-        this.id = UUID.randomUUID();
     }
 
     public String getTitleProduct() {
         return titleProduct;
     }
 
+    @Override
     public UUID getId() {
-        return id;
+        return Searchable.super.getId();
     }
 
     public abstract double getPriceProduct();
@@ -39,7 +38,7 @@ public abstract class Product implements Searchable {
     @JsonIgnore
     @Override
     public String getTypeContent() {
-        return PRODUCT;
+        return "PRODUCT";
     }
 
 

@@ -27,19 +27,17 @@ public class SearchService {
 
 
     public SearchService(Map<String, Product> products, Map<String, Article> articles, StorageService storageService) {
-        this.products = new HashMap<>();
-        this.articles = new HashMap<>();
+        this.products = products;
+        this.articles = articles;
         this.storageService = storageService;
     }
 
-    @GetMapping("/search")
     public Collection<Searchable> getAllSearchable() {
         return Stream.concat(products.values().stream(), articles.values().stream())
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/search/pattern")
-    public List<SearchResult> findPattern (@RequestParam String pattern) {
+    public Collection<SearchResult> findPattern (@RequestParam String pattern) {
         return this.storageService.getAllSearchable().stream()
                 .filter(searchable -> searchable.getSearchTerm().toLowerCase().contains(pattern.toLowerCase()))
                 .map(SearchResult::fromSearchable)
