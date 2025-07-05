@@ -27,7 +27,7 @@ public final class Article implements Searchable {
     }
 
     public UUID getId() {
-        return id;
+        return UUID.randomUUID();
     }
     @JsonIgnore
     @Override

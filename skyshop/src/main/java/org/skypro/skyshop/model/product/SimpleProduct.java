@@ -18,7 +18,7 @@ public class SimpleProduct extends Product {
 
     @Override
     public UUID getId() {
-        return id;
+        return UUID.randomUUID();
     }
 
     @Override

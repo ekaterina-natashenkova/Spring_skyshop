@@ -9,7 +9,7 @@ public class SearchResult {
     private final String contentType;
 
     public SearchResult(UUID id, String name, String contentType) {
-        this.id = String.valueOf(id);
+        this.id = id.toString();
         this.name = name;
         this.contentType = contentType;
     }
