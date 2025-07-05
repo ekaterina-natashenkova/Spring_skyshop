@@ -23,7 +23,7 @@ public class DiscountedProduct extends Product {
 
     @Override
     public UUID getId() {
-        return UUID.randomUUID();
+        return id;
     }
 
     @Override

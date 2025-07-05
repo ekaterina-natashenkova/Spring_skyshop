@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RestController
-public class ShopController {
+public class ShopController { // а нужны ли в контроллере поля сервисов и конструктор для них, если мы добавляем сюда методы ???
 
     private final StorageService storageService;
     private final SearchService searchService;

@@ -14,7 +14,7 @@ public class FixPriceProduct extends Product {
 
     @Override
     public UUID getId() {
-        return UUID.randomUUID();
+        return id;
     }
 
     @Override

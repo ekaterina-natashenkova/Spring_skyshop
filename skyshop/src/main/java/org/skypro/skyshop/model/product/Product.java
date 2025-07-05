@@ -23,7 +23,7 @@ public abstract class Product implements Searchable {
 
     @Override
     public UUID getId() {
-        return UUID.randomUUID();
+        return Searchable.super.getId();
     }
 
     public abstract double getPriceProduct();
