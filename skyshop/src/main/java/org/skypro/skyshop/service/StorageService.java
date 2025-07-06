@@ -9,10 +9,7 @@ import org.skypro.skyshop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,10 +18,12 @@ public class StorageService {
 
     private final Map<UUID, Product> products;
     private final Map<UUID, Article> articles;
+    private final Map<UUID, Product> availableProducts;
 
-    public StorageService() throws IllegalAccessException {
+    public StorageService(Map<UUID, Product> availableProducts) throws IllegalAccessException {
         this.products = new HashMap<>();
         this.articles = new HashMap<>();
+        this.availableProducts = availableProducts;
         createTestObjects();
     }
 
@@ -98,6 +97,10 @@ public class StorageService {
         Article a6 = new Article("кефир - мифы и реальность", "о кефире, как о разновидности кисломолочной продукции", UUID.randomUUID());
         this.articles.put(a6.getId(), a6);
 
+    }
+
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(availableProducts.get(id));
     }
 
 
