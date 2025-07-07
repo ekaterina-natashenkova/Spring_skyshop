@@ -24,8 +24,7 @@ public class BasketService {
     }
 
     public void addProductBasket(UUID id) {
-        Optional<Product> productOptional = storageService.getProductById(id);
-        if (!productOptional.isPresent()) {
+        if (!storageService.getProductById(id).isPresent()) {
             throw new IllegalArgumentException("Отсутствует продукт с id: " + id);
         }
         productsBasket.addProductsBasket(id);
