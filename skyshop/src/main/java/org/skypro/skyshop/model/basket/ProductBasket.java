@@ -25,8 +25,8 @@ public class ProductBasket {
         return Collections.unmodifiableMap(productsBasket);
     }
 
-    public void addProductsBasket(){
-        productsBasket.put(id, productsBasket.getOrDefault(id, 0) + 1);
+    public void addProductsBasket(UUID id){
+        productsBasket.put(this.id, productsBasket.get(this.id) + 1);
     }
 
     @Override

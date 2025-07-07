@@ -18,12 +18,12 @@ public class StorageService {
 
     private final Map<UUID, Product> products;
     private final Map<UUID, Article> articles;
-    private final Map<UUID, Product> availableProducts;
+    //private final Map<UUID, Product> availableProducts;
 
-    public StorageService(Map<UUID, Product> availableProducts) throws IllegalAccessException {
+    public StorageService() throws IllegalAccessException {
         this.products = new HashMap<>();
         this.articles = new HashMap<>();
-        this.availableProducts = availableProducts;
+       // this.availableProducts = availableProducts;
         createTestObjects();
     }
 
@@ -100,7 +100,7 @@ public class StorageService {
     }
 
     public Optional<Product> getProductById(UUID id) {
-        return Optional.ofNullable(availableProducts.get(id));
+        return Optional.ofNullable(products.get(id));
     }
 
 

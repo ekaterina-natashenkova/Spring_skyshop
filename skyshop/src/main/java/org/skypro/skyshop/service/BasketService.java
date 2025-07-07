@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 @Service
 public class BasketService {
 
@@ -26,18 +28,15 @@ public class BasketService {
         if (!productOptional.isPresent()) {
             throw new IllegalArgumentException("Отсутствует продукт с id: " + id);
         }
-        productsBasket.addProductsBasket();
+        productsBasket.addProductsBasket(id);
     }
 
-    public UserBasket getUserBasket(Product availableProducts) {
-        Map<UUID, Integer> productMap = productsBasket.getProductsBasket();
-        List<BasketItem> basketItems = productMap.entrySet().stream()
-                .map(entry -> {
-                    Optional<Product> product = storageService.getProductById(entry.getKey());
-                    return new BasketItem(availableProducts, entry.getValue());
-                })
-                .collect(Collectors.toList());
-        return new UserBasket(basketItems);
-
+    public UserBasket getUserBasket() {
+        List<BasketItem> basketItemsList = productsBasket.getProductsBasket().entrySet().stream()
+                .map(entry -> new BasketItem(storageService.getProductById(entry.getKey()).orElseThrow(), entry.getValue()))
+                .toList();
+        return new UserBasket(basketItemsList);
     }
+
+
 }
