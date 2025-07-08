@@ -2,7 +2,9 @@ package org.skypro.skyshop.model.basket;
 
 import org.skypro.skyshop.model.product.Product;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collector;
 
 public class BasketItem {
 
@@ -35,10 +37,8 @@ public class BasketItem {
 
     @Override
     public String toString() {
-        return "BasketItem{" +
-                "product=" + product +
-                ", quantity=" + quantity +
-                '}';
+        return "BasketItem{" + "product=" + product + ", quantity=" + quantity + '}';
     }
+
 
 }

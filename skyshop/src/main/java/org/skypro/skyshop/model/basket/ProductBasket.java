@@ -14,19 +14,21 @@ import java.util.UUID;
 public class ProductBasket {
 
     private final Map<UUID, Integer> productsBasket;
-    private final UUID id;
 
-    public ProductBasket(Map<UUID, Integer> productsBasket, UUID id) {
+    public ProductBasket() {
         this.productsBasket = new HashMap<>();
-        this.id = id;
     }
 
     public Map<UUID, Integer> getProductsBasket() {
         return Collections.unmodifiableMap(productsBasket);
     }
 
-    public void addProductsBasket(UUID id){
-        productsBasket.put(this.id, productsBasket.get(this.id) + 1);
+    public void addProductsBasket(UUID id) {
+        if (!productsBasket.containsKey(id)) {
+            productsBasket.put(id, 1);
+        } else {
+            productsBasket.put(id, productsBasket.get(id) + 1);
+        }
     }
 
     @Override
@@ -42,8 +44,6 @@ public class ProductBasket {
 
     @Override
     public String toString() {
-        return "ProductBasket{" +
-                "productsBasket=" + productsBasket +
-                '}';
+        return "ProductBasket{" + "productsBasket=" + productsBasket + '}';
     }
 }

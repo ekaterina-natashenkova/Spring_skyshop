@@ -20,7 +20,7 @@ public class UserBasket {
         return total;
     }
 
-    public double calculateTotal() {
+    private double calculateTotal() {
         return basketItems.stream()
                 .mapToDouble(item -> item.getProduct().getPriceProduct() * item.getQuantity())
                 .sum();
