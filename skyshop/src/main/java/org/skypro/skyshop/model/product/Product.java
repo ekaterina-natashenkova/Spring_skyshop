@@ -9,6 +9,7 @@ import java.util.UUID;
 public abstract class Product implements Searchable {
 
     private String titleProduct;
+    UUID id;
 
     public Product(String titleProduct) throws IllegalAccessException {
         if (titleProduct == null || titleProduct.isBlank()) {
@@ -23,7 +24,8 @@ public abstract class Product implements Searchable {
 
     @Override
     public UUID getId() {
-        return Searchable.super.getId();
+
+        return id;
     }
 
     public abstract double getPriceProduct();

@@ -9,10 +9,8 @@ import org.skypro.skyshop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -78,7 +76,7 @@ public class StorageService {
         this.products.put(p13.getId(), p13);
         Product p14 = new DiscountedProduct("морс клюквенный", 200, 50, UUID.randomUUID());
         this.products.put(p14.getId(), p14);
-        Product p15 = new SimpleProduct("м", 100, UUID.randomUUID()); // ошибка названия - ничего не введено
+        Product p15 = new SimpleProduct("морсик", 100, UUID.randomUUID()); // ошибка названия - ничего не введено
         this.products.put(p15.getId(), p15);
         Product p16 = new DiscountedProduct("морс брусничный", 10, 35, UUID.randomUUID()); // ошибка цены - 0
         this.products.put(p16.getId(), p16);
@@ -98,6 +96,10 @@ public class StorageService {
         Article a6 = new Article("кефир - мифы и реальность", "о кефире, как о разновидности кисломолочной продукции", UUID.randomUUID());
         this.articles.put(a6.getId(), a6);
 
+    }
+
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(products.get(id));
     }
 
 
